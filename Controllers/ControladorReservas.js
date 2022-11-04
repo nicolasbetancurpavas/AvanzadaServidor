@@ -53,28 +53,38 @@ export class ControladorReservas {
             let numeroPersonas = datosReserva.numeroNinos + datosReserva.numeroAdultos;
             let entrada = new Date(datosReserva.fechaEntrada);
             let salida = new Date(datosReserva.fechaSalida);
+
             const diffInDays = Math.floor((salida - entrada) / (1000 * 60 * 60 * 24));
             let costo = 0
-            if (diffInDays > 0) {
+            if (datosHabitacion.estado == true && diffInDays > 0) {
+                datosHabitacion.estado == false
 
-                if (maxPersonas >= numeroPersonas) {
-
+                if (maxPersonas >= numeroPersonas && numeroPersonas > 1) {
                     costo = Number(datosHabitacion.valorNoche) * Number(diffInDays)
                     datosReserva.costoReserva = costo;
                     await objetoServicioReserva.agregarReservaEnBD(datosReserva)
-
                     response.status(200).json({
                         "mensaje": "Exito agregando la reserva",
                         "datos": datosReserva,
                         "estado": true
                     })
-                } else {
+                }
+
+                if (numeroPersonas < 1) {
                     response.status(400).json({
-                        "mensaje": "Error en la reserva" + error,
+                        "mensaje": `no se puede reservar sin no hay personas `,
                         "datos": null,
                         "estado": false
                     })
                 }
+                else if (maxPersonas < numeroPersonas) {
+                    response.status(400).json({
+                        "mensaje": `la capacidad maxima son 7 personas y la reserva indica que hay ${numeroPersonas} personas`,
+                        "datos": null,
+                        "estado": false
+                    })
+                }
+
             } else {
                 response.status(400).json({
                     "mensaje": "Error en la reserva" + error,

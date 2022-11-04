@@ -27,6 +27,11 @@ const EsquemaHabitacion = new Schema({
     numeroMaximoPersonas: {
         required: true,
         type: Number
+    },
+
+    estado: {
+        required: true,
+        type: Boolean
     }
 
 });

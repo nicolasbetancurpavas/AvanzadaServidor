@@ -56,12 +56,12 @@ export class ControladorHabitacion {
 
                 response.status(200).json({
                     "mensaje": "Exito agregando una habitacion",
-                    "datos": null
+                    "datos": datosHabitacion
                 })
 
             } else {
                 response.status(400).json({
-                    "mensaje": "La habitacion tiene un limite de personas",
+                    "mensaje": "La habitacion tsiene un limite de personas",
                     "datos": null
                 })
             }
@@ -89,6 +89,7 @@ export class ControladorHabitacion {
                 "mensaje": "Exito editando una habitacion " + id,
                 "datos": null,
             })
+
         } catch (error) {
             response.status(400).json({
                 "mensaje": "Error en la consulta" + error,
