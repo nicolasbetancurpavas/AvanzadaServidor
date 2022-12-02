@@ -1,6 +1,5 @@
 //RECIBIR PETICIONES, LOGICA DE NEGOCIO Y ENVIO DE RESPUESTAS
 import { ServicioHabitacion } from '../services/ServicioHabitacion.js'
-//los puntos no son iguales que las comas ej : "." ","
 
 export class ControladorHabitacion {
 
@@ -15,6 +14,7 @@ export class ControladorHabitacion {
                 "mensaje": "Exito en la consulta",
                 "datos": await objetoServicioHabitacion.buscarHabitaciones(),
             })
+
         } catch (error) {
             response.status(400).json({
                 "mensaje": "Error en la consulta" + error,
@@ -24,7 +24,7 @@ export class ControladorHabitacion {
     }
 
     async buscarHabitacionPorId(request, response) {
-        //response.send("Estoy buscando una habitacion por id desde el controlador")
+
         let idHabitacion = request.params.idHabitacion //Recibo id de la peticion
         let objetoServicioHabitacion = new ServicioHabitacion()
 
@@ -33,6 +33,7 @@ export class ControladorHabitacion {
                 "mensaje": "Exito en la consulta " + idHabitacion,
                 "datos": await objetoServicioHabitacion.buscarHabitacionPorId(idHabitacion)
             })
+
         } catch (error) {
             response.status(400).json({
                 "mensaje": "Error en la consulta" + error,

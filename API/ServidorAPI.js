@@ -1,11 +1,11 @@
 import express from 'express'
+import cors from 'cors'
 
 import { rutas } from '../Routes/rutas.js'
 
 import { conectarConMongo } from '../Database/conexion.js'
 
 export class ServidorAPI {
-
 
     constructor() {
         this.app = express()
@@ -23,9 +23,11 @@ export class ServidorAPI {
 
     atenderPeticiones = () => this.app.use('/', rutas)
 
-
     conectarConBD = () => conectarConMongo()
 
-    activarBody = () => this.app.use(express.json())
+    activarBody = () => {
+        this.app.use(cors())
+        this.app.use(express.json())
+    }
 
 }
