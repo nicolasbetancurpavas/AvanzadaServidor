@@ -10,4 +10,4 @@
     <li>Servicios de nuestra bd(mongodb) CRUD</li>
     <li>Despliegue vercel</li>
 </ul>
-<img src="https://firebasestorage.googleapis.com/v0/b/imagenes-1ccc1.appspot.com/o/readmes%2Fcliente-servidor.png?alt=media&token=74926be0-32eb-4b23-9289-3e4787b5633e" alt="">
+<img width='300px' src="https://firebasestorage.googleapis.com/v0/b/imagenes-1ccc1.appspot.com/o/readmes%2Fcliente-servidor.png?alt=media&token=74926be0-32eb-4b23-9289-3e4787b5633e" alt="">
